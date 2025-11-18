@@ -82,3 +82,13 @@ Frontend runs on `http://localhost:5173`
 - Appropriate use of models and response structure
 - Clean, simple React
 - Correct data flow (loading, error, results)
+
+## Submission Instructions
+
+To submit your work:
+
+1. **Fork this repository on GitHub.**
+2. **Clone your fork locally and complete the assignment there.**
+3. **Commit and push** your changes to your fork's `main` branch.
+4. **Open a Pull Request** from your fork's `main` branch into this repository's `main` branch.
+5. Title the PR: `Take-Home submission — <Your Name>`
