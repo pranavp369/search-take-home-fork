@@ -1,23 +1,42 @@
+export type SearchDocumentMetadata = {
+  id: number;
+  title: string;
+  // Allow additional metadata fields without losing type safety.
+  [key: string]: unknown;
+};
+
+export type SearchDocument = {
+  page_content: string;
+  metadata: SearchDocumentMetadata;
+};
+
 export type SearchResult = {
-  document: {
-    id: string;
-    title: string;
-    body: string;
-  };
+  document: SearchDocument;
   score: number;
   reason?: string;
 };
 
-export async function search(query: string, topK = 5): Promise<SearchResult[]> {
-  const response = await fetch("/api/search", {
-    method: "POST",
-    body: JSON.stringify({ query, top_k: topK }),
-    headers: { "Content-Type": "application/json" },
-  });
+export class SearchError extends Error {
+  status?: number;
 
-  if (!response.ok) {
-    throw new Error(`Search failed with status ${response.status}`);
+  constructor(message: string, status?: number) {
+    super(message);
+    this.name = "SearchError";
+    this.status = status;
   }
+}
 
-  return response.json();
+/**
+ * Perform a search request against the backend.
+ *
+ * TODO (candidate):
+ * - Call the `/api/search` endpoint via `fetch`.
+ * - Send `{ query, top_k: topK }` as a JSON body.
+ * - On non-OK responses, throw a `SearchError` with a helpful message and
+ *   the HTTP status code.
+ * - Parse and return the JSON response typed as `SearchResult[]`.
+ */
+export async function search(query: string, topK = 5): Promise<SearchResult[]> {
+  // Stub implementation so the app compiles; replace this with a real call.
+  throw new SearchError("search() not implemented yet");
 }
