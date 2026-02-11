@@ -35,7 +35,7 @@ async def text_to_cypher(text: str) -> str:
     """
     # TODO - Convert text to Cypher query
     llm_text = ChatOpenAI(
-            openai_api_key=os.getenv('API_KEY'),#"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",
+            openai_api_key=os.getenv('API_KEY'),
             base_url="https://openrouter.ai/api/v1",
             model="arcee-ai/trinity-large-preview:free",
         )
