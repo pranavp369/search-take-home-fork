@@ -38,5 +38,25 @@ export class SearchError extends Error {
  */
 export async function search(query: string, topK = 5): Promise<SearchResult[]> {
   // Stub implementation so the app compiles; replace this with a real call.
-  throw new SearchError("search() not implemented yet");
+  const response = await fetch("/api/search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query, top_k: topK }),
+  });
+  if (!response.ok) {
+    let errorText = `Search request failed (${response.status})`;
+    try { 
+      const errorData = await response.json();
+      if (errorData.error) {
+        errorText += `: ${errorData.error}`;
+      }
+    } catch {
+      // Ignore JSON parsing errors and use the default message.
+    }
+    throw new SearchError(errorText, response.status);
+  }
+  const data = await response.json();
+  return data as SearchResult[];
 }

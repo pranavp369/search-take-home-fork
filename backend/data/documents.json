@@ -14,5 +14,9 @@
 	{
 		"page_content": "To bake bread, you need flour, yeast, and an oven!",
 		"metadata": {"id": 4, "title": "Baking Bread: How-To"}
+	},
+	{
+		"page_content": "Dementia is a syndrome that can be caused by a number of diseases which over time destroy nerve cells and damage the brain",
+		"metadata": {"id": 5, "title": "Understanding Dementia"}
 	}
 ]
